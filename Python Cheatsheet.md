@@ -9,10 +9,10 @@ I have created this Cheat Sheet while learning Python to remember the common syn
 2. float
 3. boolean
 4. string
-5. **[`list`](#list)**
+5. **[`List`](#list)**
 6. tuple
 7. set
-8. **['dictionary'](#Dictionary)**
+8. **[`Dictionary`](#Dictionary)**
 
 #### Arithmetic Operations
 ```python
