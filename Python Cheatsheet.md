@@ -10,9 +10,9 @@ I have created this Cheat Sheet while learning Python to remember the common syn
 3. boolean
 4. string
 5. **[`List`](#list)**
-6. tuple
+6. **[`Tuple`](#tuples)**
 7. set
-8. **[`Dictionary`](#Dictionary)**
+8. **[`Dictionary`](#dictionary)**
 
 #### Arithmetic Operations
 ```python
@@ -66,6 +66,7 @@ fruits[0:2]		list[start-index : stop]
 fruits[0::2]	list[[start-index : stop : step]
 fruits[::-1]	start from the end-index of list hence reverse the list
 ```
+
 #### List Methods
 <b>append()</b>	Adds an element at the end of the list
 ```python
@@ -73,12 +74,14 @@ fruits[::-1]	start from the end-index of list hence reverse the list
 >>> fruits
 ['apple', 'pears', 'orange', 'banana', 'pineapple', 'strawberry']
 ```
+
 <b>insert()</b>	Adds an element at the specified position
 ```python
 >>> fruits.insert(3,'Blueberry')
 >>> fruits
 ['apple', 'pears', 'orange', 'Blueberry', 'banana', 'pineapple', 'strawberry']
 ```
+
 <b>extend()</b>	Add the elements of a list (or any iterable), to the end of the current list
 ```python
 >>> fruits = ['apple','pears','orange','banana','pineapple']
@@ -101,6 +104,7 @@ fruits[::-1]	start from the end-index of list hence reverse the list
 >>> fruits
 ['apple', 'pears', 'banana', 'pineapple', 'Avacado']
 ```
+
 <b>remove()</b>	Removes the first item with the specified value
 ```python
 >>> fruits = ['apple', 'pears', 'banana', 'pineapple', 'Avacado']
@@ -108,6 +112,7 @@ fruits[::-1]	start from the end-index of list hence reverse the list
 >>> fruits
 ['apple', 'pears', 'pineapple', 'Avacado']
 ```
+
 <b>clear()</b>	Removes all the elements from the list
 ```python
 >>> fruits.clear()
@@ -121,6 +126,7 @@ fruits[::-1]	start from the end-index of list hence reverse the list
 >>> fruits.index('mango')
 1
 ```
+
 <b>count()</b>	Returns the number of elements with the specified value
 ```python
 >>> fruits = ['apple','mango', 'pears', 'banana', 'pineapple', 'Avacado','mango']
@@ -220,14 +226,117 @@ dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year', 1964), ('feature',
 ```
 
 <b>clear()</b>	Removes all the elements from the dictionary
+```python
+>>> dictionary = {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'feature':['EcoBoost','Climate Control','Air filter']}
+>>> dictionary.clear()
+>>> dictionary
+{}
+```
 
 <b>copy()</b>	Returns a copy of the dictionary
+```python
+>>> dictionary = {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'feature':['EcoBoost','Climate Control','Air filter']}
+>>> dictionary2 = dictionary.copy()
+>>> dictionary2
+{'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'feature': ['EcoBoost', 'Climate Control', 'Air filter']}
+>>> dictionary.clear()
+>>> dictionary
+{}
+>>> dictionary2
+{'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'feature': ['EcoBoost', 'Climate Control', 'Air filter']}
+```
 
 <b>pop()</b>	Removes the element with the specified key
+```python
+>>> dictionary = {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'feature':['EcoBoost','Climate Control','Air filter']}
+>>> dictionary.pop()
+Traceback (most recent call last):
+  File "<pyshell#17>", line 1, in <module>
+    dictionary.pop()
+TypeError: pop expected at least 1 argument, got 0
+>>> dictionary.pop('year')
+1964
+```
+
+<b>popitem()</b>	Removes the last inserted key-value pair
+```python
+>>> dictionary
+{'brand': 'Ford', 'model': 'Mustang', 'feature': ['EcoBoost', 'Climate Control', 'Air filter']}
+>>> dictionary= {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'feature':['EcoBoost','Climate Control','Air filter']}
+>>> dictionary.popitem()
+('feature', ['EcoBoost', 'Climate Control', 'Air filter'])
+```
+
+<b>update()</b>	Updates the dictionary with the specified key-value pairs
+```python
+>>> dictionary = {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'feature':['EcoBoost','Climate Control','Air filter']}
+>>> dictionary.update({'year':1965})
+>>> dictionary
+{'brand': 'Ford', 'model': 'Mustang', 'year': 1965, 'feature': ['EcoBoost', 'Climate Control', 'Air filter']}
+>>> dictionary.update({'Airbag':'yes'})
+>>> dictionary
+{'brand': 'Ford', 'model': 'Mustang', 'year': 1965, 'feature': ['EcoBoost', 'Climate Control', 'Air filter'], 'Airbag': 'yes'}
+```
+
+values()	Returns a list of all the values in the dictionary
+setdefault()	Returns the value of the specified key. If the key does not exist: insert the key, with the specified value
 
 
+### Tuples
+A tuple is a collection which is ordered and unchangeable. <em>Immutable</em><br>
+In Python tuples are written with round brackets.<br>
+Once a tuple is created, you cannot change its values. Tuples are unchangeable, or immutable as it also is called.<br>
+But there is a workaround. You can convert the tuple into a list, change the list, and convert the list back into a tuple.
+e.g.
+For rideshare car services, we can create a new tuple everytime a user requests a new pickup location.
 
+#### Tuples Methods
+<b>count()</b>	Returns the number of times a specified value occurs in a tuple
+```python
+>>> fruits = ('apple','Strawberry', 'mango', 'banana', 'kiwi','pineapple', 'Avacado','mango')
+>>> fruits.count('mango')
+2
+```
 
+<b>index()</b>	Searches the tuple for a specified value and returns the position of where it was found
+```python
+>>> fruits = ('apple','Strawberry', 'mango', 'banana', 'kiwi','pineapple', 'Avacado','mango')
+>>> fruits.index('mango')
+2
+>>> fruits.index('kiwi')
+4
+```
+
+#### Tuple slicing
+```python
+>>> fruit_tuple = ('apple', 'pears', 'banana', 'pineapple', 'Avacado')
+>>> fruit_tuple
+('apple', 'pears', 'banana', 'pineapple', 'Avacado')
+>>> fruit_tuple[1]
+'pears'
+>>> fruit_tuple[0:2]
+('apple', 'pears')
+>>> fruit_tuple[:4]
+('apple', 'pears', 'banana', 'pineapple')
+>>> fruit_tuple[0:4:2]
+('apple', 'banana')
+>>> fruit_tuple[::-1]
+('Avacado', 'pineapple', 'banana', 'pears', 'apple')
+```
+
+#### Tuple unpacking
+```python
+>>> fruits = ('apple','Strawberry', 'pears', 'banana', 'kiwi','pineapple', 'Avacado','mango')
+>>> x, y, z, *others = ('apple','Strawberry', 'pears', 'banana', 'kiwi','pineapple', 'Avacado','mango')
+>>> x
+'apple'
+>>> y
+'Strawberry'
+>>> z
+'pears'
+>>> others
+['banana', 'kiwi', 'pineapple', 'Avacado', 'mango']
+```
 
 ### Python Keywords
 <em>in</em>	To check if a value is present in a list, tuple, etc.
@@ -238,7 +347,6 @@ True
 >>> 'mango' in fruits
 False
 ```
-
 
 ### Python Built in Functions
 
