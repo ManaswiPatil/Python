@@ -11,7 +11,7 @@ I have created this Cheat Sheet while learning Python to remember the common syn
 4. string
 5. **[`List`](#list)**
 6. **[`Tuple`](#tuples)**
-7. set
+7. **[`Set`](#set)**
 8. **[`Dictionary`](#dictionary)**
 
 #### Arithmetic Operations
@@ -338,6 +338,119 @@ For rideshare car services, we can create a new tuple everytime a user requests 
 ['banana', 'kiwi', 'pineapple', 'Avacado', 'mango']
 ```
 
+### Set
+A set is a collection which is unordered and unindexed. In Python, sets are written with curly brackets.<br>
+You cannot access items in a set by referring to an index or a key.
+
+But you can loop through the set items using a for loop, or ask if a specified value is present in a set, by using the in keyword.<br>
+
+#### Set Methods
+
+add()	Adds an element to the set
+clear()	Removes all the elements from the set
+copy()	Returns a copy of the set
+
+<b>difference()</b>	Returns a set containing the difference between two or more sets
+```python
+>>> my_set = {1,2,3,4,5,6}
+>>> your_set = {3,4,5,6,7,8,9,10}
+>>> my_set.difference(your_set)
+{1, 2}
+>>> your_set.difference(my_set)
+{8, 9, 10, 7}
+```
+
+<b>difference_update()</b>	Removes the items in this set that are also included in another, specified set
+```python
+>>> my_set = {1, 2, 3, 4, 5, 6}
+>>> your_set = {3, 4, 5, 6, 7, 8, 9, 10}
+>>> my_set.difference_update(your_set)
+>>> my_set
+{1, 2}
+>>> your_set
+{3, 4, 5, 6, 7, 8, 9, 10}
+```
+
+<b>discard()</b>	Remove the specified item
+```python
+>>> fruit_set = {'banana', 'kiwi', 'pineapple', 'Avacado', 'mango'}
+>>> fruit_set.discard('mango')
+>>> fruit_set
+{'pineapple', 'banana', 'Avacado', 'kiwi'}
+```
+
+<b>intersection()</b>	Returns a set, that is the intersection of two other sets
+```python
+>>> my_set = {1,2,3,4,5,6}
+>>> your_set = {3,4,5,6,7,8,9,10}
+>>> my_set.intersection(your_set)
+{3, 4, 5, 6}
+>>> my_set
+{1, 2, 3, 4, 5, 6}
+>>> your_set
+{3, 4, 5, 6, 7, 8, 9, 10}
+>>> 
+```
+
+<b>intersection_update()</b>	Removes the items in this set that are not present in other, specified set(s)
+```python
+>>> my_set = {1,2,3,4,5,6}
+>>> your_set = {3,4,5,6,7,8,9,10}
+>>> my_set.intersection_update(your_set)
+>>> my_set
+{3, 4, 5, 6}
+>>> your_set
+{3, 4, 5, 6, 7, 8, 9, 10}
+>>> 
+```
+<b>isdisjoint()</b>	Returns whether two sets have a intersection(False) or not(True)
+```python
+>>> my_set = {1,2,3,4,5,6}
+>>> your_set = {3,4,5,6,7,8,9,10}
+>>> my_set.isdisjoint(your_set)
+False
+>>> my_set = {1,2,}
+>>> your_set = {3,4,5,6,7,8,9,10}
+>>> my_set.isdisjoint(your_set)
+True
+>>> 
+```
+
+<b>union()</b>	Return a set containing the union of sets
+```python
+>>> my_set = {1,2,3,4,5,6}
+>>> your_set = {5,6,7,8,9,10}
+>>> my_set.union(your_set)
+{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+```
+
+<b>issubset()</b>	Returns whether another set contains this set or not
+<b>issuperset()</b>	Returns whether this set contains another set or not
+```python
+>>> my_set = {1,2,3,4,5,6}
+>>> your_set = {5,6,7,8,9,10}
+>>> my_set.issubset(your_set)
+False
+>>> my_set.issuperset(your_set)
+False
+>>> 
+>>> my_set = {3,4,5,6}
+>>> your_set = {3,4,5,6,7,8,9,10}
+>>> my_set.issubset(your_set)
+True
+>>> your_set.issuperset(my_set)
+True
+>>>
+```
+
+pop()	Removes an element from the set
+remove()	Removes the specified element
+symmetric_difference()	Returns a set with the symmetric differences of two sets
+symmetric_difference_update()	inserts the symmetric differences from this set and another
+update()	Update the set with the union of this set and others
+
+
+
 ### Python Keywords
 <em>in</em>	To check if a value is present in a list, tuple, etc.
 ```python
@@ -366,3 +479,12 @@ False
 3. XML file
 4. Docx file
 5. PDF file
+
+
+<b>Q. Why is p greater then P?</b>
+
+<p>String comparison in Python is case-sensitive. Python compares strings lexicographically, using the constituent characters based on their ASCII or Unicode code points. The same principle applies for Python3.
+
+In ASCII, and therefore in Unicode, lowercase letters are greater than all uppercase letters. Therefore, 'p' > 'P', and indeed, 'a' > 'Z'. In your case, "python" begins with the letter 'p', whereas "Python" begins with the uppercase letter 'P'. They begin with different code points; the lowercase variant is greater.
+
+The convention that lowercase letters are greater than uppercase letters in ASCII is historical.</p>
